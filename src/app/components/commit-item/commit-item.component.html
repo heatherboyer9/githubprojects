@@ -1,0 +1,5 @@
+
+  <td>{{commit.commit.message}}</td>
+  <td>{{commit.commit.author.name}}</td>
+  <td>{{commit.commit.author.date | date:"MM/dd/yy"}}</td>
+  <td><a href="{{commit.html_url}}"><span>{{commit.sha | slice:1:5}}</span></a></td>

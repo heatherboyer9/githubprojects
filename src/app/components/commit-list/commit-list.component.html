@@ -1,0 +1,15 @@
+<h2 class="h3">Commits</h2>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+          <th *ngFor="let col of columns">
+            {{col}}
+          </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of commits" app-commit-item [commit]="c"></tr>
+    </tbody>
+  </table>
+</div>
