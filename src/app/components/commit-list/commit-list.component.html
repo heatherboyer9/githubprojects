@@ -1,9 +1,10 @@
 <h2 class="h3">Commits</h2>
-<div class="table-responsive">
+<p *ngIf="message">{{message}}</p>
+<div class="table-responsive" *ngIf="commits">
   <table class="table table-striped">
-    <thead>
+    <thead class="thead-dark">
       <tr>
-          <th *ngFor="let col of columns">
+          <th *ngFor="let col of columns; first as isFirst" [ngClass]="{'w-50' : isFirst}">
             {{col}}
           </th>
       </tr>

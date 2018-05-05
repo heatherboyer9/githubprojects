@@ -18,4 +18,13 @@ export class RepoService {
     );
   }
 
+  getRepoByName (username: string, reponame : string): Observable<Repo> {
+    //sort by recently updated
+    return this.http.get<Repo>('https://api.github.com/repos/' + username + '/' + reponame).pipe(
+      map((res: Repo) => {
+        return res;
+      }) 
+    );
+  }
+
 }

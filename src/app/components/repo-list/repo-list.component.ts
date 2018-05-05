@@ -10,6 +10,7 @@ export class RepoListComponent {
 
   @Input() username: string;
   @Output() onSelectRepo = new EventEmitter<Repo>();
+  @Output() onUpdateMessage = new EventEmitter<string>();
   repos: Repo[];
 
   getCommits(repo: Repo){
@@ -26,6 +27,13 @@ export class RepoListComponent {
     if(this.username){
       this.repoService.getRepoListByUser(this.username).subscribe(repoItems => {
         this.repos = repoItems;
+        if(this.repos.length > 0){
+          //load the first project's commits
+          this.getCommits(this.repos[0]);
+        }
+      }, error => {
+        console.log('error', error);
+        this.onUpdateMessage.emit("This user can not be found.");
       });
     }
   }

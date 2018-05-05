@@ -13,6 +13,7 @@ export class CommitListComponent implements OnInit {
   @Input() username: string;
   columns: any[];
   commits: Commit[];
+  message: string;
 
   constructor(private commitService: CommitService){}
 
@@ -21,6 +22,8 @@ export class CommitListComponent implements OnInit {
   }
 
   ngOnChanges() {
+    this.commits = null;
+    this.message = '';
     this.loadCommits();
   }
 
@@ -28,6 +31,9 @@ export class CommitListComponent implements OnInit {
     if(this.repo){
       this.commitService.getCommitListByRepo(this.username, this.repo.name).subscribe(commitItems => {
         this.commits = commitItems;
+      }, error => {
+        console.log('error', error);
+        this.message = "There are no commits for this repository.";
       });
     }
   }

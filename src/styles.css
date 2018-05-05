@@ -33,6 +33,17 @@
       position: sticky;
     }
   }
+
+  @media (max-width: 768px){
+    .sidebar {
+      position: relative;
+      height: auto;
+      top: 48px;
+    }
+    .sidebar-sticky {
+      height: calc(30vh - 48px);
+    }
+  }
   
   .sidebar .nav-link {
     font-weight: 500;
