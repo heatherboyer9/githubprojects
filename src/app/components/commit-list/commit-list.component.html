@@ -13,4 +13,20 @@
       <tr *ngFor="let c of commits" app-commit-item [commit]="c"></tr>
     </tbody>
   </table>
+  <nav *ngIf="paging" aria-label="paging">
+      <ul class="pagination justify-content-center">
+          <li *ngIf="paging['first']" class="page-item">
+              <a class="page-link" (click)="loadCommits(paging['first'])">First</a>
+          </li>
+          <li *ngIf="paging['prev']" class="page-item">
+              <a class="page-link" (click)="loadCommits(paging['prev'])">Prev</a>
+          </li>
+          <li *ngIf="paging['next']" class="page-item">
+              <a class="page-link" (click)="loadCommits(paging['next'])">Next</a>
+          </li>
+          <li *ngIf="paging['last']" class="page-item">
+              <a class="page-link" (click)="loadCommits(paging['last'])">Last</a>
+          </li>
+      </ul>
+  </nav>
 </div>

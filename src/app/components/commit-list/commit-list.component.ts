@@ -13,6 +13,7 @@ export class CommitListComponent implements OnInit {
   @Input() username: string;
   columns: any[];
   commits: Commit[];
+  paging: object;
   message: string;
 
   constructor(private commitService: CommitService){}
@@ -23,14 +24,25 @@ export class CommitListComponent implements OnInit {
 
   ngOnChanges() {
     this.commits = null;
+    this.paging = null;
     this.message = '';
     this.loadCommits();
   }
 
-  loadCommits(){
-    if(this.repo){
-      this.commitService.getCommitListByRepo(this.username, this.repo.name).subscribe(commitItems => {
-        this.commits = commitItems;
+  loadCommits(pageURL: string = null){
+    if(pageURL){
+      this.commitService.getCommitListByURL(pageURL).subscribe(res => {
+        this.commits = res.commits;
+        this.paging = res.paging;
+      }, error => {
+        console.log('error', error);
+        this.message = "There are no commits for this repository.";
+      });
+    } else if(this.repo){
+      this.commitService.getCommitListByRepo(this.username, this.repo.name).subscribe(res => {
+        console.log('respones',res);
+        this.commits = res.commits;
+        this.paging = res.paging;
       }, error => {
         console.log('error', error);
         this.message = "There are no commits for this repository.";

@@ -11,9 +11,11 @@ export class AppComponent implements OnInit {
   message: string;
 
   getRepos(searchForm){
-    this.message = '';
-    this.username = searchForm.txtSearch;
-    this.selectedrepo = null;
+    if(searchForm.txtSearch != this.username){
+      this.message = '';
+      this.username = searchForm.txtSearch;
+      this.selectedrepo = null;
+    }
   }
 
   onSelectRepo(repo: Repo){
