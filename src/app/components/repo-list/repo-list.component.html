@@ -3,7 +3,7 @@
 </h6>
 <ul class="nav flex-column" *ngFor="let repo of repos">
     <li class="nav-item">
-        <a class="nav-link" (click)="getCommits(repo)">
+        <a class="nav-link" [ngClass]="{'active' : repo.name == selectedRepo.name}" (click)="getCommits(repo)">
             <span>{{ repo.name }}</span>
         </a>
     </li>

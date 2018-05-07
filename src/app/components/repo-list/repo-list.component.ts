@@ -12,8 +12,10 @@ export class RepoListComponent {
   @Output() onSelectRepo = new EventEmitter<Repo>();
   @Output() onUpdateMessage = new EventEmitter<string>();
   repos: Repo[];
+  selectedRepo: Repo;
 
   getCommits(repo: Repo){
+    this.selectedRepo = repo;
     this.onSelectRepo.emit(repo);
   }
 

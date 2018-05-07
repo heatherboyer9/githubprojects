@@ -56,13 +56,13 @@
     color: #999;
   }
   
-  .sidebar .nav-link.active {
-    color: #007bff;
-  }
-  
   .sidebar .nav-link:hover .feather,
   .sidebar .nav-link.active .feather {
     color: inherit;
+  }
+
+  .sidebar .nav-link.active,  .sidebar .nav-link:hover span {
+    color: #007bff;
   }
   
   .sidebar-heading {
